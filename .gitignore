@@ -35,8 +35,8 @@ lerna-debug.log*
 !.vscode/extensions.json
 
 .env
-conf/.env.dev
-conf/.env.prod
+.env.dev
+.env.prod
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*

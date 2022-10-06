@@ -5,7 +5,6 @@ services:
       image: nginx:1.21.0
       container_name: nginx
       volumes:
-          - ../:/var/www
           - ./default.conf:/etc/nginx/conf.d/default.conf
       ports:
           - 80:80
@@ -15,12 +14,10 @@ services:
         - server
 
   server:
-    build:
-      context: ../server
-      dockerfile: Dockerfile.dev
+    image: shp7408/mgs-server:1.0
     command: npm run start
     volumes:
-        - ../server:/var/www/server
+        - ./server:/var/www/server
     networks:
         my-network:
             aliases:
