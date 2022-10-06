@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  nginx:
+      image: nginx:1.21.0
+      container_name: nginx
+      volumes:
+          - ../:/var/www
+          - ./default.conf:/etc/nginx/conf.d/default.conf
+      ports:
+          - 80:80
+      networks:
+          - my-network
+      depends_on:
+        - server
+
+  server:
+    build:
+      context: ../server
+      dockerfile: Dockerfile.dev
+    command: npm run start
+    volumes:
+        - ../server:/var/www/server
+    networks:
+        my-network:
+            aliases:
+                - server
+    expose:
+        - 3000
+    ports:
+        - "3000:3000"
+    env_file:
+      - ".env.prod"
+
+networks:
+    my-network:

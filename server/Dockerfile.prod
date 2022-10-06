@@ -1,0 +1,14 @@
+FROM node:16-alpine
+
+#Docker가 이 경로를 모든 후속 명령의 기본 위치로 설정하도록 함
+WORKDIR /app
+
+# package.json및 package-lock.json파일을 작업 디렉토리에 복사합니다 /app.
+COPY ["package.json", "package-lock.json*", "./"]
+
+RUN npm install
+
+# 소스 코드를 이미지에 추가
+COPY . .
+
+CMD ["npm", "start:prod"]
