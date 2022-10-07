@@ -6,11 +6,11 @@ WORKDIR /app
 # package.json및 package-lock.json파일을 작업 디렉토리에 복사합니다 /app.
 COPY package*.json ./
 
+# ec2 배포 시, 힙 최대 사용 메모리 설정
 ENV NODE_OPTIONS=--max_old_space_size=2048
 
 RUN npm install
 
-# 소스 코드를 이미지에 추가
 COPY . .
 
 EXPOSE 3000
