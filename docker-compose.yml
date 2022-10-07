@@ -11,7 +11,7 @@ services:
       networks:
           - my-network
       depends_on:
-        - server
+          - server
 
   server:
     image: shp7408/mgs-server:1.0
