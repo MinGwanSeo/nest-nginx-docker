@@ -19,7 +19,6 @@ services:
         context: ./server
         dockerfile: ./Dockerfile.prod
     container_name: server
-    command: npm run start
     volumes:
         - ./server:/var/www/server
     networks:
