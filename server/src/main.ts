@@ -8,7 +8,7 @@ async function bootstrap() {
 
   app.enableCors()
 
-  app.use(['/docs'], basicAuth({ challenge: true, users: { mgs: 'mgsmgs' } }))
+  app.use(['/api/docs'], basicAuth({ challenge: true, users: { mgs: 'mgsmgs' } }))
   const swaggerOptions = new DocumentBuilder()
     .setTitle('MGS API Docs')
     .setDescription('MGS API Docs')
@@ -16,7 +16,7 @@ async function bootstrap() {
     .build()
 
   const document = SwaggerModule.createDocument(app, swaggerOptions)
-  SwaggerModule.setup('docs', app, document)
+  SwaggerModule.setup('/api/docs', app, document)
   await app.listen(3000)
 }
 bootstrap()
