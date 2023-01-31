@@ -3,5 +3,3 @@
 
 ## Swagger
 url : https://mingwanseo.com/docs
-id : mgs
-pwd : mgsmgs
